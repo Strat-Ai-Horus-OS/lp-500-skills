@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Skills Orbit — embed</title>
+<style>
+  /* ====== widget escopado em .skills-orbit — cole este bloco onde quiser ====== */
+  html, body { margin: 0; height: 100%; background: transparent; }
+
+  .skills-orbit {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: 320px;
+    container-type: size;
+    overflow: hidden;
+    /* sem cor de fundo: transparente */
+  }
+
+  .skills-orbit *,
+  .skills-orbit *::before,
+  .skills-orbit *::after { box-sizing: border-box; }
+
+  .skills-orbit .field {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    --unit: 92cqmin;
+    --rad1: calc(var(--unit) * 0.275);
+    --rad2: calc(var(--unit) * 0.425);
+    --mascot: calc(var(--unit) * 0.205);
+    --emoji: calc(var(--unit) * 0.062);
+    --d1: 40s;
+    --d2: 54s;
+    --line: rgba(217,119,87,0.10);
+    --ringline: rgba(217,119,87,0.22);
+    --glow: rgba(217,119,87,0.5);
+  }
+
+  /* ---- grade ---- */
+  .skills-orbit .grid-bg {
+    position: absolute;
+    inset: -2px;
+    background-image:
+      linear-gradient(var(--line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--line) 1px, transparent 1px);
+    background-size: calc(var(--unit) * 0.055) calc(var(--unit) * 0.055);
+    -webkit-mask-image: radial-gradient(circle at 50% 50%, #000 28%, transparent 76%);
+    mask-image: radial-gradient(circle at 50% 50%, #000 28%, transparent 76%);
+    pointer-events: none;
+  }
+
+  /* ---- anéis tracejados da órbita ---- */
+  .skills-orbit .orbit-ring {
+    position: absolute;
+    top: 50%; left: 50%;
+    border: 1px dashed var(--ringline);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+  }
+  .skills-orbit .orbit-ring.r1 { width: calc(var(--rad1) * 2); height: calc(var(--rad1) * 2); }
+  .skills-orbit .orbit-ring.r2 { width: calc(var(--rad2) * 2); height: calc(var(--rad2) * 2); }
+
+  /* ---- anéis giratórios (pontos 0x0 → eixo fixo no centro) ---- */
+  .skills-orbit .ring {
+    position: absolute;
+    top: 50%; left: 50%;
+    width: 0; height: 0;
+    will-change: transform;
+  }
+  .skills-orbit .ring.r1 { --rad: var(--rad1); animation: so-spin var(--d1) linear infinite; }
+  .skills-orbit .ring.r2 { --rad: var(--rad2); animation: so-spin var(--d2) linear infinite reverse; }
+  @keyframes so-spin { to { transform: rotate(360deg); } }
+
+  .skills-orbit .slot {
+    position: absolute;
+    top: 0; left: 0;
+    width: 0; height: 0;
+    transform: rotate(var(--a)) translateY(calc(-1 * var(--rad)));
+  }
+  .skills-orbit .spin {
+    position: absolute;
+    top: 0; left: 0;
+    width: 0; height: 0;
+    will-change: transform;
+  }
+  .skills-orbit .ring.r1 .spin { animation: so-spin var(--d1) linear infinite reverse; }
+  .skills-orbit .ring.r2 .spin { animation: so-spin var(--d2) linear infinite; }
+  .skills-orbit .deangle {
+    position: absolute;
+    top: 0; left: 0;
+    width: 0; height: 0;
+    transform: rotate(calc(-1 * var(--a)));
+  }
+  .skills-orbit .emoji {
+    position: absolute;
+    top: 0; left: 0;
+    transform: translate(-50%, -50%);
+    font-size: var(--emoji);
+    line-height: 1;
+    filter: drop-shadow(0 2px 7px rgba(0,0,0,0.28));
+    user-select: none;
+  }
+
+  /* ---- mascote ---- */
+  .skills-orbit .mascot {
+    position: relative;
+    width: var(--mascot);
+    height: var(--mascot);
+    display: grid;
+    place-items: center;
+    z-index: 5;
+    animation: so-bob 5.5s ease-in-out infinite;
+  }
+  @keyframes so-bob {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-3%) rotate(-1deg); }
+  }
+  .skills-orbit .mascot .glow {
+    position: absolute;
+    inset: -52%;
+    border-radius: 50%;
+    background: radial-gradient(circle, var(--glow) 0%, rgba(217,119,87,0) 62%);
+    animation: so-glow 4s ease-in-out infinite;
+    z-index: -1;
+    pointer-events: none;
+  }
+  @keyframes so-glow {
+    0%, 100% { transform: scale(0.95); }
+    50% { transform: scale(1.08); }
+  }
+  .skills-orbit .mascot img {
+    width: 100%; height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 14px 24px rgba(0,0,0,0.30));
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .skills-orbit .ring,
+    .skills-orbit .spin,
+    .skills-orbit .mascot,
+    .skills-orbit .glow { animation: none !important; }
+  }
+</style>
+</head>
+<body>
+<div class="skills-orbit">
+  <div class="field">
+    <div class="grid-bg"></div>
+    <div class="orbit-ring r1"></div>
+    <div class="orbit-ring r2"></div>
+
+    <!-- órbita interna (5) -->
+    <div class="ring r1">
+      <div class="slot" style="--a:0deg"><div class="spin"><div class="deangle"><span class="emoji">✍️</span></div></div></div>
+      <div class="slot" style="--a:72deg"><div class="spin"><div class="deangle"><span class="emoji">🎯</span></div></div></div>
+      <div class="slot" style="--a:144deg"><div class="spin"><div class="deangle"><span class="emoji">📱</span></div></div></div>
+      <div class="slot" style="--a:216deg"><div class="spin"><div class="deangle"><span class="emoji">💰</span></div></div></div>
+      <div class="slot" style="--a:288deg"><div class="spin"><div class="deangle"><span class="emoji">🤖</span></div></div></div>
+    </div>
+
+    <!-- órbita externa (7) -->
+    <div class="ring r2">
+      <div class="slot" style="--a:0deg"><div class="spin"><div class="deangle"><span class="emoji">📢</span></div></div></div>
+      <div class="slot" style="--a:51.43deg"><div class="spin"><div class="deangle"><span class="emoji">✉️</span></div></div></div>
+      <div class="slot" style="--a:102.86deg"><div class="spin"><div class="deangle"><span class="emoji">🔍</span></div></div></div>
+      <div class="slot" style="--a:154.29deg"><div class="spin"><div class="deangle"><span class="emoji">⚖️</span></div></div></div>
+      <div class="slot" style="--a:205.71deg"><div class="spin"><div class="deangle"><span class="emoji">🚀</span></div></div></div>
+      <div class="slot" style="--a:257.14deg"><div class="spin"><div class="deangle"><span class="emoji">⚙️</span></div></div></div>
+      <div class="slot" style="--a:308.57deg"><div class="spin"><div class="deangle"><span class="emoji">🎓</span></div></div></div>
+    </div>
+
+    <div class="mascot">
+      <div class="glow"></div>
+      <img src="inserir_imagem_aqui" alt="Mascote Claude Code" draggable="false" />
+    </div>
+  </div>
+</div>
+</body>
+</html>

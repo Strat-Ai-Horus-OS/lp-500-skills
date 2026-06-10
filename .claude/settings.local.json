@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(powershell -Command \"\\(Select-String -Path 'h:\\\\Meu Drive\\\\Cursor Gabas\\\\Site 500 skills v2\\\\index-novo.html' -Pattern '<section|</section>' | Measure-Object\\).Count\")",
+      "Bash(powershell -Command ' *)"
+    ]
+  }
+}
