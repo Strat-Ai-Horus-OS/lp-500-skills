@@ -1763,8 +1763,9 @@ footer { background: var(--brown); padding: 46px 0; }
     e.preventDefault();
     var nome=$('sup-nome').value.trim(),email=$('sup-email').value.trim(),fone=$('sup-fone').value.trim(),msg=$('sup-msg').value.trim();
     if(!nome||!email||!fone)return;
+    var dig=fone.replace(/\D/g,'').replace(/^55/,'');var phone=dig?('+55'+dig):'';
     var b=$('sup-btn');b.disabled=true;b.textContent='Enviando…';
-    try{window.stratTrack&&window.stratTrack('Lead',{product:'lp-500-skills',origem:'suporte',mensagem:msg},{em:email,ph:fone,fn:nome})}catch(err){}
+    try{window.stratTrack&&window.stratTrack('Lead',{product:'lp-500-skills',origem:'suporte',mensagem:msg},{em:email,ph:phone,fn:nome})}catch(err){}
     $('sup-form').style.display='none';$('sup-ok').style.display='block';
     setTimeout(window.closeSuporte,2600);
   });
