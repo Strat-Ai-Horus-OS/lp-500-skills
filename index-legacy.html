@@ -1,0 +1,1374 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<!--
+  IMAGENS PARA GERAR:
+  1. foto-gabriel.jpg — foto profissional do Gabriel, formato 4:5 (ex: 800x1000px),
+     fundo escuro neutro ou ambiente de trabalho, expressão direta, sem sorrisão forçado.
+  2. og-image.png — 1200x630px, fundo #0F1115, título em Montserrat branco,
+     acento laranja #D97A4A, texto: "500+ Skills para Claude Code | Strat"
+  3. favicon.png — 32x32px e 180x180px, estilo terminal: ">_" ou "S>" em laranja sobre preto.
+-->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>500+ Skills para Claude Code | Strat</title>
+<meta name="description" content="Instale skills prontas no Claude Code e mova números reais da sua empresa. Mapeamento, estratégia e execução em 3 comandos.">
+<meta property="og:title" content="500+ Skills para Claude Code | Strat">
+<meta property="og:description" content="Instale skills prontas no Claude Code e mova números reais da sua empresa.">
+<meta property="og:image" content="og-image.png">
+<meta property="og:type" content="website">
+<link rel="icon" href="favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700;800&family=Montserrat:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg:        #0F1115;
+    --surface:   #1A1D24;
+    --surface2:  #21252E;
+    --orange:    #D97A4A;
+    --orange-bg: rgba(217,122,74,0.10);
+    --orange-border: rgba(217,122,74,0.25);
+    --off-white: #F5F3EE;
+    --muted:     #C2C5CE;
+    --display:   'Space Grotesk', sans-serif;
+    --border:    #2A2D34;
+    --green:     #6BCB77;
+    --red:       #E05C5C;
+    --font:      'Montserrat', sans-serif;
+    --mono:      'JetBrains Mono', monospace;
+    --radius:    8px;
+    --radius-lg: 12px;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font);
+    background: var(--bg);
+    color: var(--off-white);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: inherit; text-decoration: none; }
+  img { max-width: 100%; display: block; }
+
+  .container {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  .btn {
+    display: inline-block;
+    padding: 14px 28px;
+    border-radius: var(--radius);
+    font-family: var(--font);
+    font-weight: 700;
+    font-size: 15px;
+    cursor: pointer;
+    border: none;
+    transition: opacity 0.2s, transform 0.15s;
+    letter-spacing: 0.02em;
+  }
+  .btn:hover { opacity: 0.88; transform: translateY(-1px); }
+  .btn-orange { background: var(--orange); color: #fff; }
+  .btn-outline { background: transparent; color: var(--off-white); border: 1.5px solid var(--border); }
+  .btn-outline:hover { border-color: var(--orange); color: var(--orange); opacity: 1; }
+  .btn-lg { padding: 18px 36px; font-size: 16px; }
+
+  .tag {
+    display: inline-block;
+    background: var(--orange-bg);
+    color: var(--orange);
+    border: 1px solid var(--orange-border);
+    padding: 4px 12px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-family: var(--mono);
+  }
+
+  .section-label {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--orange);
+    font-family: var(--mono);
+    margin-bottom: 12px;
+  }
+
+  section { padding: 96px 0; }
+
+  h1, h2, h3 { font-family: 'Space Grotesk', sans-serif; }
+
+  h2 {
+    font-size: clamp(28px, 4vw, 40px);
+    font-weight: 800;
+    line-height: 1.2;
+    color: var(--off-white);
+    margin-bottom: 16px;
+  }
+
+  h3 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--off-white);
+  }
+
+  p { color: var(--muted); line-height: 1.7; }
+
+  .divider {
+    height: 1px;
+    background: var(--border);
+    margin: 0;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(15,17,21,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 24px;
+    max-width: 1080px;
+    margin: 0 auto;
+  }
+  .nav-logo {
+    font-family: var(--mono);
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--off-white);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .nav-logo .cursor {
+    display: inline-block;
+    width: 8px;
+    height: 16px;
+    background: var(--orange);
+    animation: blink 1.1s step-end infinite;
+    margin-left: 2px;
+    border-radius: 1px;
+  }
+  @keyframes blink { 50% { opacity: 0; } }
+  .nav-links { display: flex; gap: 32px; align-items: center; }
+  .nav-links a { font-size: 14px; font-weight: 500; color: var(--muted); transition: color 0.2s; }
+  .nav-links a:hover { color: var(--off-white); }
+  .nav-links .nav-text-links { display: flex; gap: 32px; align-items: center; }
+  @media (max-width: 640px) {
+    .nav-links .nav-text-links { display: none; }
+    .nav-links { gap: 0; }
+    .nav-links .btn { padding: 9px 16px; font-size: 13px; }
+  }
+
+  /* ─── HERO ─── */
+  #hero { padding: 80px 0 96px; }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: center;
+  }
+  @media (max-width: 768px) {
+    .hero-grid { grid-template-columns: 1fr; gap: 48px; }
+  }
+  .hero-eyebrow { margin-bottom: 20px; }
+  .hero-title {
+    font-size: clamp(32px, 5vw, 52px);
+    font-weight: 800;
+    line-height: 1.15;
+    margin-bottom: 20px;
+    color: var(--off-white);
+  }
+  .hero-title em { font-style: normal; color: var(--orange); }
+  .hero-sub {
+    font-size: 17px;
+    color: var(--muted);
+    margin-bottom: 36px;
+    max-width: 440px;
+  }
+  .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+  .hero-badges {
+    margin-top: 32px;
+    display: flex;
+    align-items: center;
+    gap: 0;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    width: fit-content;
+  }
+  .hero-badge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 14px 28px;
+    gap: 2px;
+  }
+  .hero-badge-value {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--orange);
+    line-height: 1;
+  }
+  .hero-badge-label {
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--muted);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .hero-badge-sep {
+    width: 1px;
+    height: 40px;
+    background: var(--border);
+    flex-shrink: 0;
+  }
+
+  /* Terminal */
+  .terminal {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    font-family: var(--mono);
+    font-size: 13px;
+  }
+  .terminal-bar {
+    background: var(--surface2);
+    padding: 10px 16px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    border-bottom: 1px solid var(--border);
+  }
+  .terminal-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+  }
+  .dot-red { background: #FF5F57; }
+  .dot-yellow { background: #FEBC2E; }
+  .dot-green { background: #28C840; }
+  .terminal-title {
+    margin-left: 8px;
+    font-size: 12px;
+    color: var(--muted);
+  }
+  .terminal-body { padding: 20px; line-height: 1.8; }
+  .t-prompt { color: var(--green); }
+  .t-cmd { color: var(--off-white); }
+  .t-comment { color: var(--muted); }
+  .t-orange { color: var(--orange); }
+  .t-output { color: #A8C4A0; padding-left: 16px; }
+  .t-error { color: var(--red); }
+  .t-blank { height: 8px; }
+
+  /* ─── LOGOS / PROVA SOCIAL RÁPIDA ─── */
+  #logos {
+    padding: 40px 0;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  .logos-inner {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .logos-label { font-size: 12px; color: var(--muted); margin-right: 8px; white-space: nowrap; }
+  .logo-pill {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 8px 16px;
+    font-size: 13px;
+    color: var(--muted);
+    font-weight: 500;
+  }
+
+  /* ─── COMO FUNCIONA ─── */
+  #como-funciona { background: var(--surface); }
+  .steps-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    margin-top: 56px;
+  }
+  @media (max-width: 640px) { .steps-grid { grid-template-columns: 1fr; } }
+  .step-card {
+    background: var(--surface);
+    padding: 36px 28px;
+  }
+  .step-number {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--orange);
+    letter-spacing: 0.08em;
+    margin-bottom: 12px;
+  }
+  .step-card h3 { margin-bottom: 10px; font-size: 20px; }
+  .step-card p { font-size: 14px; }
+  .step-cmd {
+    margin-top: 16px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 10px 14px;
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--orange);
+  }
+
+  /* ─── PARA QUEM É ─── */
+  #para-quem { }
+  .personas-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-top: 48px;
+  }
+  @media (max-width: 768px) { .personas-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 480px) { .personas-grid { grid-template-columns: 1fr; } }
+  .persona-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 24px;
+    transition: border-color 0.2s;
+  }
+  .persona-card:hover { border-color: var(--orange-border); }
+  .persona-icon {
+    width: 40px;
+    height: 40px;
+    background: var(--orange-bg);
+    border-radius: var(--radius);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    margin-bottom: 16px;
+  }
+  .persona-card h3 { font-size: 16px; margin-bottom: 8px; }
+  .persona-card p { font-size: 13px; }
+
+  /* ─── CATEGORIAS ─── */
+  #categorias { background: var(--surface); }
+  .cats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-top: 48px;
+  }
+  @media (max-width: 900px) { .cats-grid { grid-template-columns: repeat(3, 1fr); } }
+  @media (max-width: 640px) { .cats-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 400px) { .cats-grid { grid-template-columns: 1fr; } }
+  .cat-card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 20px;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .cat-card:hover { border-color: var(--orange-border); background: var(--orange-bg); }
+  .cat-emoji { font-size: 24px; margin-bottom: 10px; }
+  .cat-card h3 { font-size: 14px; margin-bottom: 4px; }
+  .cat-card p { font-size: 12px; }
+  .cat-count {
+    margin-top: 12px;
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--orange);
+  }
+
+  /* ─── COMPARAÇÃO ─── */
+  #comparacao { }
+  .compare-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-top: 48px;
+  }
+  @media (max-width: 640px) { .compare-grid { grid-template-columns: 1fr; } }
+  .compare-col {
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+  .compare-header {
+    padding: 16px 24px;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+  }
+  .compare-header.bad { background: rgba(224,92,92,0.12); color: var(--red); border-bottom: 1px solid rgba(224,92,92,0.2); }
+  .compare-header.good { background: var(--orange-bg); color: var(--orange); border-bottom: 1px solid var(--orange-border); }
+  .compare-list { padding: 24px; background: var(--surface); }
+  .compare-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 10px 0;
+    font-size: 14px;
+    color: var(--muted);
+    border-bottom: 1px solid var(--border);
+  }
+  .compare-item:last-child { border-bottom: none; }
+  .compare-item .icon { flex-shrink: 0; margin-top: 1px; }
+  .icon-bad { color: var(--red); }
+  .icon-good { color: var(--green); }
+
+  /* ─── FUNCIONA ONDE VOCÊ JÁ ESTÁ ─── */
+  #funcionalidades { background: var(--surface); }
+  .feat-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: center;
+    margin-top: 56px;
+  }
+  @media (max-width: 768px) { .feat-grid { grid-template-columns: 1fr; } }
+  .feat-list { display: flex; flex-direction: column; gap: 20px; }
+  .feat-item { display: flex; gap: 16px; }
+  .feat-dot {
+    flex-shrink: 0;
+    width: 36px;
+    height: 36px;
+    background: var(--orange-bg);
+    border: 1px solid var(--orange-border);
+    border-radius: var(--radius);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+  }
+  .feat-item h3 { font-size: 15px; margin-bottom: 4px; }
+  .feat-item p { font-size: 13px; }
+  .platform-mock {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+  }
+  .platform-header {
+    background: var(--surface2);
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--border);
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--muted);
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+  .platform-header::before { content: '>'; color: var(--orange); }
+  .platform-body { padding: 20px; font-family: var(--mono); font-size: 12px; }
+  .platform-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 12px;
+    border-radius: var(--radius);
+    transition: background 0.15s;
+    cursor: default;
+    gap: 12px;
+  }
+  .platform-row:hover { background: var(--surface2); }
+  .platform-row-name { color: var(--off-white); }
+  .platform-row-desc { color: var(--muted); font-size: 11px; flex: 1; padding: 0 12px; }
+  .platform-row-badge {
+    font-size: 10px;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: 600;
+  }
+  .badge-active { background: rgba(107,203,119,0.15); color: var(--green); }
+  .badge-hot { background: var(--orange-bg); color: var(--orange); }
+
+  /* ─── DEPOIMENTOS ─── */
+  #depoimentos { }
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-top: 48px;
+  }
+  @media (max-width: 768px) { .testimonials-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 480px) { .testimonials-grid { grid-template-columns: 1fr; } }
+  .testimonial-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 24px;
+  }
+  .testimonial-stars { color: var(--orange); font-size: 13px; margin-bottom: 14px; }
+  .testimonial-text {
+    font-size: 14px;
+    color: var(--off-white);
+    line-height: 1.7;
+    margin-bottom: 20px;
+    font-style: italic;
+  }
+  .testimonial-author { display: flex; align-items: center; gap: 12px; }
+  .author-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--surface2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--orange);
+    flex-shrink: 0;
+    border: 1px solid var(--border);
+  }
+  .author-name { font-size: 13px; font-weight: 600; color: var(--off-white); }
+  .author-role { font-size: 11px; color: var(--muted); }
+
+  /* ─── QUEM CONDUZ ─── */
+  #quem-conduz { background: var(--surface); }
+  .gabriel-grid {
+    display: grid;
+    grid-template-columns: 400px 1fr;
+    gap: 72px;
+    align-items: center;
+    margin-top: 56px;
+  }
+  @media (max-width: 768px) { .gabriel-grid { grid-template-columns: 1fr; gap: 40px; } }
+  .gabriel-photo {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    aspect-ratio: 4/5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .gabriel-photo-placeholder {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--muted);
+    text-align: center;
+    padding: 24px;
+    line-height: 1.8;
+  }
+  .gabriel-photo-placeholder .icon { font-size: 40px; margin-bottom: 12px; }
+  .gabriel-name {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 32px;
+    font-weight: 800;
+    color: var(--off-white);
+    margin-bottom: 8px;
+  }
+  .gabriel-title {
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--orange);
+    margin-bottom: 24px;
+  }
+  .gabriel-bio { font-size: 15px; color: var(--muted); margin-bottom: 24px; line-height: 1.8; }
+  .gabriel-stats {
+    display: flex;
+    gap: 32px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+    flex-wrap: wrap;
+  }
+  .gabriel-stat-value { font-size: 28px; font-weight: 800; color: var(--orange); }
+  .gabriel-stat-label { font-size: 12px; color: var(--muted); }
+
+  /* ─── PREÇO ─── */
+  #preco { }
+  .pricing-center { max-width: 560px; margin: 0 auto; margin-top: 48px; }
+  .pricing-card {
+    background: var(--surface);
+    border: 1px solid var(--orange-border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+  }
+  .pricing-badge {
+    background: var(--orange);
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+  }
+  .pricing-body { padding: 40px; }
+  .pricing-name { font-size: 14px; font-weight: 600; color: var(--muted); margin-bottom: 8px; letter-spacing: 0.06em; text-transform: uppercase; font-family: var(--mono); }
+  .pricing-from { font-size: 14px; color: var(--muted); text-decoration: line-through; }
+  .pricing-price { font-size: 56px; font-weight: 800; color: var(--off-white); line-height: 1; margin: 8px 0; }
+  .pricing-price span { font-size: 20px; font-weight: 600; color: var(--muted); }
+  .pricing-sub { font-size: 13px; color: var(--muted); margin-bottom: 32px; }
+  .pricing-features { list-style: none; display: flex; flex-direction: column; gap: 12px; margin-bottom: 32px; }
+  .pricing-features li { display: flex; gap: 10px; align-items: flex-start; font-size: 14px; color: var(--off-white); }
+  .pricing-features li::before { content: '✓'; color: var(--green); font-weight: 700; flex-shrink: 0; }
+  .pricing-cta { display: block; text-align: center; }
+  .pricing-note { text-align: center; font-size: 12px; color: var(--muted); margin-top: 16px; }
+
+  /* ─── GARANTIA ─── */
+  #garantia { background: var(--surface); }
+  .garantia-inner {
+    display: flex;
+    gap: 48px;
+    align-items: center;
+    max-width: 800px;
+    margin: 0 auto;
+    margin-top: 48px;
+  }
+  @media (max-width: 640px) { .garantia-inner { flex-direction: column; text-align: center; } }
+  .garantia-badge {
+    flex-shrink: 0;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 2px solid var(--orange);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: var(--orange-bg);
+  }
+  .garantia-days { font-size: 36px; font-weight: 800; color: var(--orange); line-height: 1; }
+  .garantia-days-label { font-size: 11px; color: var(--orange); font-weight: 600; letter-spacing: 0.06em; }
+  .garantia-text h2 { font-size: 24px; margin-bottom: 12px; }
+  .garantia-text p { font-size: 15px; }
+
+  /* ─── FAQ ─── */
+  #faq { }
+  .faq-list { max-width: 720px; margin: 0 auto; margin-top: 48px; display: flex; flex-direction: column; gap: 4px; }
+  .faq-item {
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+  .faq-question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    padding: 20px 24px;
+    cursor: pointer;
+    background: var(--surface);
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--off-white);
+    transition: background 0.15s;
+    user-select: none;
+    list-style: none;
+  }
+  .faq-question:hover { background: var(--surface2); }
+  .faq-question::marker { display: none; }
+  .faq-chevron {
+    flex-shrink: 0;
+    color: var(--muted);
+    transition: transform 0.2s;
+    font-size: 18px;
+  }
+  .faq-item.open .faq-chevron { transform: rotate(45deg); color: var(--orange); }
+  .faq-answer {
+    padding: 0 24px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, padding 0.3s;
+    background: var(--bg);
+  }
+  .faq-item.open .faq-answer {
+    max-height: 400px;
+    padding: 20px 24px;
+  }
+  .faq-answer p { font-size: 14px; color: var(--muted); }
+
+  /* ─── FINAL CTA ─── */
+  #final-cta {
+    background: linear-gradient(135deg, var(--surface) 0%, var(--bg) 100%);
+    border-top: 1px solid var(--border);
+    text-align: center;
+  }
+  .final-cta-inner { max-width: 600px; margin: 0 auto; }
+  .final-cta-inner h2 { font-size: clamp(28px, 4vw, 42px); margin-bottom: 16px; }
+  .final-cta-inner p { font-size: 16px; margin-bottom: 36px; }
+  .final-cmd {
+    font-family: var(--mono);
+    font-size: 14px;
+    color: var(--muted);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 12px 20px;
+    display: inline-block;
+    margin-bottom: 36px;
+  }
+  .final-cmd span { color: var(--orange); }
+
+  /* ─── FOOTER ─── */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 40px 0;
+    background: var(--bg);
+  }
+  .footer-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .footer-logo {
+    font-family: var(--mono);
+    font-size: 14px;
+    color: var(--muted);
+  }
+  .footer-links { display: flex; gap: 24px; }
+  .footer-links a { font-size: 13px; color: var(--muted); transition: color 0.2s; }
+  .footer-links a:hover { color: var(--off-white); }
+  .footer-copy { font-size: 12px; color: var(--muted); }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo">&gt; strat.skills<span class="cursor"></span></div>
+    <div class="nav-links">
+      <div class="nav-text-links">
+        <a href="#como-funciona">Como funciona</a>
+        <a href="#categorias">Skills</a>
+        <a href="#preco">Preço</a>
+        <a href="#faq">FAQ</a>
+      </div>
+      <a href="#preco" class="btn btn-orange" style="padding:10px 20px;font-size:13px;">Garantir acesso</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div>
+        <div class="hero-eyebrow">
+          <span class="tag">Acesso antecipado · R$47</span>
+        </div>
+        <h1 class="hero-title">
+          <em>+500 skills</em> para Claude Code que movem números reais da sua empresa.
+        </h1>
+        <p class="hero-sub">
+          Instala em segundos, ativa com um clique, resultado no próximo relatório.
+        </p>
+        <div class="hero-actions">
+          <a href="#preco" class="btn btn-orange btn-lg">Quero as skills →</a>
+          <a href="#como-funciona" class="btn btn-outline">Como funciona</a>
+        </div>
+        <div class="hero-badges">
+          <div class="hero-badge">
+            <span class="hero-badge-value">+500</span>
+            <span class="hero-badge-label">skills</span>
+          </div>
+          <div class="hero-badge-sep"></div>
+          <div class="hero-badge">
+            <span class="hero-badge-value">11</span>
+            <span class="hero-badge-label">categorias</span>
+          </div>
+          <div class="hero-badge-sep"></div>
+          <div class="hero-badge">
+            <span class="hero-badge-value">2 min</span>
+            <span class="hero-badge-label">pra instalar</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LOGOS -->
+<div id="logos">
+  <div class="container">
+    <div class="logos-inner">
+      <span class="logos-label">funciona em qualquer empresa que use</span>
+      <div class="logo-pill">Distribuição</div>
+      <div class="logo-pill">Varejo</div>
+      <div class="logo-pill">Serviços</div>
+      <div class="logo-pill">Consultoria</div>
+      <div class="logo-pill">Agências</div>
+      <div class="logo-pill">Indústria</div>
+    </div>
+  </div>
+</div>
+
+<!-- COMO FUNCIONA -->
+<section id="como-funciona">
+  <div class="container">
+    <div class="section-label">// processo</div>
+    <h2>Três passos. Resultado real.</h2>
+    <p style="max-width:500px;">Sem configuração complicada. Sem onboarding de semanas. Você instala, ativa com um comando e o Claude Code já sabe o que fazer.</p>
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-number">PASSO 01</div>
+        <h3>Instala</h3>
+        <p>Clica no botão, faz o download e arrasta a pasta pra dentro do Claude Code. Pronto. Dois minutos.</p>
+        <div class="step-cmd">↓ download via navegador</div>
+      </div>
+      <div class="step-card">
+        <div class="step-number">PASSO 02</div>
+        <h3>Ativa</h3>
+        <p>Digita o nome da skill que quer usar. O Claude já sabe o contexto, o vocabulário e o que entregar.</p>
+        <div class="step-cmd">/mapeamento-de-alavancas</div>
+      </div>
+      <div class="step-card">
+        <div class="step-number">PASSO 03</div>
+        <h3>Resultado</h3>
+        <p>Estratégia gerada. Documento pronto. Número mapeado. Você apresenta na próxima reunião.</p>
+        <div class="step-cmd">estrategia_gerada.md ✓</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PARA QUEM É -->
+<section id="para-quem">
+  <div class="container">
+    <div class="section-label">// personas</div>
+    <h2>Para quem já sabe que IA é meio, não fim.</h2>
+    <p style="max-width:520px;">Você não quer aprender 50 ferramentas. Você quer mover um número da empresa. Essas skills foram feitas pra isso.</p>
+    <div class="personas-grid">
+      <div class="persona-card">
+        <div class="persona-icon">🏢</div>
+        <h3>Dono de empresa</h3>
+        <p>Quer enxergar onde a IA impacta faturamento sem precisar de TI.</p>
+      </div>
+      <div class="persona-card">
+        <div class="persona-icon">📊</div>
+        <h3>Gestor de área</h3>
+        <p>Precisa mostrar resultado no final do mês. A skill gera o relatório que você mostra na reunião.</p>
+      </div>
+      <div class="persona-card">
+        <div class="persona-icon">🎯</div>
+        <h3>Freelancer</h3>
+        <p>Entrega mais rápido. Diagnóstico que levava dias agora sai em horas — e o cliente percebe a diferença.</p>
+      </div>
+      <div class="persona-card">
+        <div class="persona-icon">🚀</div>
+        <h3>Empreendedor solo</h3>
+        <p>Opera como uma equipe de cinco. As skills cobrem o que você ainda não tem time pra fazer.</p>
+      </div>
+      <div class="persona-card">
+        <div class="persona-icon">🎬</div>
+        <h3>Criador de conteúdo</h3>
+        <p>Produz mais sem perder a voz. Skills de pauta, roteiro e análise de engajamento num comando só.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CATEGORIAS -->
+<section id="categorias">
+  <div class="container">
+    <div class="section-label">// biblioteca</div>
+    <h2>500+ skills. 11 categorias. Um comando cada.</h2>
+    <p style="max-width:520px;">Cada skill foi escrita pra um trabalho específico. Você não adapta o Claude — você equipa ele pro seu setor.</p>
+    <div class="cats-grid">
+      <div class="cat-card">
+        <div class="cat-emoji">📊</div>
+        <h3>Estratégia e gestão</h3>
+        <p>Mapeamento, OKRs, diagnóstico de empresa</p>
+        <div class="cat-count">/ 48 skills</div>
+      </div>
+      <div class="cat-card">
+        <div class="cat-emoji">📣</div>
+        <h3>Marketing e vendas</h3>
+        <p>Copy, funil, análise de campanha</p>
+        <div class="cat-count">/ 72 skills</div>
+      </div>
+      <div class="cat-card">
+        <div class="cat-emoji">🤝</div>
+        <h3>Atendimento ao cliente</h3>
+        <p>Scripts, respostas, análise de NPS</p>
+        <div class="cat-count">/ 38 skills</div>
+      </div>
+      <div class="cat-card">
+        <div class="cat-emoji">💰</div>
+        <h3>Financeiro</h3>
+        <p>DRE, fluxo de caixa, análise de margem</p>
+        <div class="cat-count">/ 41 skills</div>
+      </div>
+      <div class="cat-card">
+        <div class="cat-emoji">⚙️</div>
+        <h3>Operações</h3>
+        <p>Processos, SOP, análise de gargalo</p>
+        <div class="cat-count">/ 55 skills</div>
+      </div>
+      <div class="cat-card">
+        <div class="cat-emoji">👥</div>
+        <h3>RH e pessoas</h3>
+        <p>Onboarding, avaliação, cultura</p>
+        <div class="cat-count">/ 33 skills</div>
+      </div>
+      <div class="cat-card">
+        <div class="cat-emoji">🧾</div>
+        <h3>Documentação</h3>
+        <p>Contratos, políticas, manuais</p>
+        <div class="cat-count">/ 29 skills</div>
+      </div>
+      <div class="cat-card">
+        <div class="cat-emoji">📦</div>
+        <h3>Supply chain</h3>
+        <p>Fornecedores, estoque, logística</p>
+        <div class="cat-count">/ 27 skills</div>
+      </div>
+      <div class="cat-card">
+        <div class="cat-emoji">📋</div>
+        <h3>Projetos</h3>
+        <p>Plano de ação, cronograma, risco</p>
+        <div class="cat-count">/ 44 skills</div>
+      </div>
+      <div class="cat-card">
+        <div class="cat-emoji">🔍</div>
+        <h3>Análise e dados</h3>
+        <p>Interpretação de métricas, dashboards</p>
+        <div class="cat-count">/ 36 skills</div>
+      </div>
+      <div class="cat-card">
+        <div class="cat-emoji">✍️</div>
+        <h3>Comunicação</h3>
+        <p>E-mail, relatório, apresentação</p>
+        <div class="cat-count">/ 52 skills</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPARAÇÃO -->
+<section id="comparacao">
+  <div class="container">
+    <div class="section-label">// clareza</div>
+    <h2>Sem skill vs com skill.</h2>
+    <p style="max-width:520px;">A diferença não é o Claude. É o que você pede pra ele fazer. Skill é o briefing que o Claude Code nunca vai esquecer.</p>
+    <div class="compare-grid">
+      <div class="compare-col">
+        <div class="compare-header bad">✕ Sem skill — o Claude genérico</div>
+        <div class="compare-list">
+          <div class="compare-item"><span class="icon icon-bad">✕</span>Resposta vaga que você precisa refinar 5 vezes</div>
+          <div class="compare-item"><span class="icon icon-bad">✕</span>Não sabe o contexto do seu setor</div>
+          <div class="compare-item"><span class="icon icon-bad">✕</span>Você escreve o mesmo prompt toda semana</div>
+          <div class="compare-item"><span class="icon icon-bad">✕</span>Resultado inconsistente entre pessoas do time</div>
+          <div class="compare-item"><span class="icon icon-bad">✕</span>Tempo gasto explicando o óbvio</div>
+        </div>
+      </div>
+      <div class="compare-col">
+        <div class="compare-header good">✓ Com skill — Claude Code equipado</div>
+        <div class="compare-list">
+          <div class="compare-item"><span class="icon icon-good">✓</span>Primeiro output já no nível certo</div>
+          <div class="compare-item"><span class="icon icon-good">✓</span>Sabe o vocabulário e o contexto do setor</div>
+          <div class="compare-item"><span class="icon icon-good">✓</span>Um comando. Sempre o mesmo resultado.</div>
+          <div class="compare-item"><span class="icon icon-good">✓</span>Qualquer pessoa do time usa, padrão uniforme</div>
+          <div class="compare-item"><span class="icon icon-good">✓</span>Você foca no que só você pode decidir</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FUNCIONALIDADES -->
+<section id="funcionalidades">
+  <div class="container">
+    <div class="feat-grid">
+      <div>
+        <div class="section-label">// infraestrutura</div>
+        <h2>Funciona onde você já está.</h2>
+        <p style="margin-bottom: 36px;">Sem nova plataforma pra aprender. Sem migração de dados. Você instala as skills no Claude Code e continua trabalhando do jeito que já trabalha.</p>
+        <div class="feat-list">
+          <div class="feat-item">
+            <div class="feat-dot">🔌</div>
+            <div>
+              <h3>Integra com seus arquivos</h3>
+              <p>O Claude Code lê seus documentos, planilhas e relatórios. A skill sabe o que fazer com eles.</p>
+            </div>
+          </div>
+          <div class="feat-item">
+            <div class="feat-dot">🔒</div>
+            <div>
+              <h3>Seus dados ficam com você</h3>
+              <p>Nada vai pra nuvem de terceiro. O processamento fica na sua máquina, no seu ambiente.</p>
+            </div>
+          </div>
+          <div class="feat-item">
+            <div class="feat-dot">⚡</div>
+            <div>
+              <h3>Atualização automática</h3>
+              <p>Novas skills são adicionadas sem você precisar fazer nada. Comprou uma vez, tem acesso ao que vem depois.</p>
+            </div>
+          </div>
+          <div class="feat-item">
+            <div class="feat-dot">🖥️</div>
+            <div>
+              <h3>VS Code, Cursor ou terminal</h3>
+              <p>Onde o Claude Code roda, as skills funcionam. Você escolhe o ambiente.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="platform-mock">
+          <div class="platform-header">strat.skills — biblioteca ativa</div>
+          <div class="platform-body">
+            <div class="platform-row">
+              <span class="platform-row-name">/mapeamento-de-alavancas</span>
+              <span class="platform-row-badge badge-active">ativo</span>
+            </div>
+            <div class="platform-row">
+              <span class="platform-row-name">/analise-de-margem</span>
+              <span class="platform-row-badge badge-active">ativo</span>
+            </div>
+            <div class="platform-row">
+              <span class="platform-row-name">/relatorio-executivo</span>
+              <span class="platform-row-badge badge-active">ativo</span>
+            </div>
+            <div class="platform-row">
+              <span class="platform-row-name">/diagnostico-operacional</span>
+              <span class="platform-row-badge badge-hot">novo</span>
+            </div>
+            <div class="platform-row">
+              <span class="platform-row-name">/plano-de-acao-90-dias</span>
+              <span class="platform-row-badge badge-active">ativo</span>
+            </div>
+            <div class="platform-row">
+              <span class="platform-row-name">/script-de-vendas</span>
+              <span class="platform-row-badge badge-hot">novo</span>
+            </div>
+            <div class="platform-row">
+              <span class="platform-row-name">/analise-de-churn</span>
+              <span class="platform-row-badge badge-active">ativo</span>
+            </div>
+            <div class="platform-row">
+              <span class="platform-row-name">/sop-de-processo</span>
+              <span class="platform-row-badge badge-active">ativo</span>
+            </div>
+            <div style="padding:12px;text-align:center;color:var(--muted);font-size:11px;border-top:1px solid var(--border);margin-top:4px;">
+              + 492 skills disponíveis
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DEPOIMENTOS -->
+<section id="depoimentos">
+  <div class="container">
+    <div class="section-label">// resultados</div>
+    <h2>Quem já usa não volta pro Claude genérico.</h2>
+    <p style="max-width:480px;">Skills de negócio, resultado de negócio. Sem milagre. Sem exagero.</p>
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"Eu gastava 2 horas montando o relatório semanal pra diretoria. Com a skill de relatório executivo saiu em 20 minutos. Meu gestor perguntou o que eu tinha feito diferente."</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">R</div>
+          <div>
+            <div class="author-name">Rafael M.</div>
+            <div class="author-role">Gerente de Operações · Distribuidora</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"Testei grátis com ChatGPT e o resultado era mediano. Com a skill de mapeamento de alavancas o Claude entendeu o contexto do meu negócio de primeira. Diferença absurda."</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">C</div>
+          <div>
+            <div class="author-name">Camila R.</div>
+            <div class="author-role">Consultora · Estratégia empresarial</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"Sou dono de padaria e sinceramente achei que IA era coisa de empresa grande. As skills de financeiro e operações mudaram minha visão. Identifiquei gargalo que estava me custando 30% de margem."</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">B</div>
+          <div>
+            <div class="author-name">Bruno S.</div>
+            <div class="author-role">Empreendedor · Alimentação</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"Minha equipe de marketing passou a usar as skills de copy e análise de campanha. O padrão de entrega subiu e eu parei de corrigir briefing ruim toda semana."</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">M</div>
+          <div>
+            <div class="author-name">Marcelo T.</div>
+            <div class="author-role">Diretor de Marketing · Varejo</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"Uso a skill de diagnóstico operacional toda vez que pego um cliente novo na consultoria. O que levava 3 dias de análise agora eu entrego em meio dia. Dobrei meu volume de projetos."</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">P</div>
+          <div>
+            <div class="author-name">Pedro L.</div>
+            <div class="author-role">Consultor independente</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"Fiz o plano de ação dos próximos 90 dias com a skill específica. Meu sócio não acreditou que eu tinha gerado sozinha. É o tipo de entrega que antes precisava de consultoria externa."</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">A</div>
+          <div>
+            <div class="author-name">Ana F.</div>
+            <div class="author-role">Sócia fundadora · Agência de serviços</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUEM CONDUZ -->
+<section id="quem-conduz">
+  <div class="container">
+    <div class="section-label">// quem está por trás</div>
+    <div class="gabriel-grid">
+      <!-- PLACEHOLDER: foto-gabriel.jpg -->
+      <div class="gabriel-photo">
+        <div class="gabriel-photo-placeholder">
+          <div class="icon">📷</div>
+          <strong style="color:var(--off-white);display:block;margin-bottom:8px;">foto-gabriel.jpg</strong>
+          Foto profissional do Gabriel<br>
+          Formato: 4:5 (ex. 800×1000px)<br>
+          Fundo escuro, expressão direta<br>
+          <span style="color:var(--orange);font-size:11px;margin-top:8px;display:block;">→ gerar e substituir este placeholder</span>
+        </div>
+      </div>
+      <div>
+        <div class="gabriel-name">Gabriel Gabas</div>
+        <div class="gabriel-title">// fundador da Strat · Imersão Claude Code para Negócios</div>
+        <p class="gabriel-bio">
+          Cansou de ver gestor sofrendo com promessa de IA que não entrega. Guru vendendo agente caro pra resolver problema de planilha. Complexidade disfarçada de sofisticação.
+        </p>
+        <p class="gabriel-bio">
+          Criou o Método das Alavancas pra simplificar: mapeia onde um esforço pequeno move um resultado grande, define o KPI, e executa do mais simples pro mais complexo.
+        </p>
+        <p class="gabriel-bio">
+          As skills são o resultado desse método aplicado em 12 setores. Cada uma foi escrita pra um trabalho específico — não pra impressionar, pra resolver.
+        </p>
+        <div class="gabriel-stats">
+          <div>
+            <div class="gabriel-stat-value">500+</div>
+            <div class="gabriel-stat-label">skills desenvolvidas</div>
+          </div>
+          <div>
+            <div class="gabriel-stat-value">12</div>
+            <div class="gabriel-stat-label">setores cobertos</div>
+          </div>
+          <div>
+            <div class="gabriel-stat-value">2h</div>
+            <div class="gabriel-stat-label">pra aplicar o método</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PREÇO -->
+<section id="preco">
+  <div class="container" style="text-align:center;">
+    <div class="section-label">// acesso</div>
+    <h2>Um preço. Acesso completo.</h2>
+    <p style="max-width:480px;margin:0 auto 0;">Sem assinatura mensal pra ferramenta. Sem plano básico que te bloqueia no que importa.</p>
+    <div class="pricing-center">
+      <div class="pricing-card">
+        <div class="pricing-badge">Acesso antecipado — preço sobe em breve</div>
+        <div class="pricing-body">
+          <div class="pricing-name">Pacote completo · 500+ skills</div>
+          <div class="pricing-from">De R$ 297</div>
+          <div class="pricing-price"><span>R$</span> 47</div>
+          <div class="pricing-sub">pagamento único · sem renovação</div>
+          <ul class="pricing-features">
+            <li>500+ skills prontas para Claude Code</li>
+            <li>12 categorias de negócio cobertas</li>
+            <li>Atualizações incluídas (novas skills que entrarem)</li>
+            <li>Instrução de instalação em 5 minutos</li>
+            <li>Compatível com VS Code, Cursor e terminal</li>
+            <li>Garantia de 7 dias ou dinheiro de volta</li>
+          </ul>
+          <a href="#" class="btn btn-orange btn-lg pricing-cta">Garantir por R$ 47 agora</a>
+          <p class="pricing-note">Pagamento via cartão, PIX ou boleto. Acesso imediato após confirmação.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GARANTIA -->
+<section id="garantia">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:0;">
+      <div class="section-label">// sem risco</div>
+      <h2>Testou, não gostou, devolve.</h2>
+    </div>
+    <div class="garantia-inner">
+      <div class="garantia-badge">
+        <div class="garantia-days">7</div>
+        <div class="garantia-days-label">DIAS</div>
+      </div>
+      <div class="garantia-text">
+        <h2>Garantia total. Sem burocracia.</h2>
+        <p>Instala, usa, testa as skills que quiser. Se em 7 dias você não sentiu diferença, manda um e-mail e devolvo 100% do valor. Sem pergunta, sem formulário, sem prazo de análise.</p>
+        <p style="margin-top:12px;">Funciona porque o produto funciona. Simples assim.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="container" style="text-align:center;">
+    <div class="section-label">// dúvidas</div>
+    <h2>Perguntas que você ia fazer.</h2>
+    <div class="faq-list" style="text-align:left;">
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          Precisa saber programar pra usar?
+          <span class="faq-chevron">+</span>
+        </div>
+        <div class="faq-answer">
+          <p>Não. Skill não é código. É um arquivo de texto que o Claude Code lê pra entender o contexto. Você instala, digita o comando e usa. Se você sabe abrir uma pasta e copiar arquivos, você consegue.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          Funciona com qual versão do Claude?
+          <span class="faq-chevron">+</span>
+        </div>
+        <div class="faq-answer">
+          <p>As skills funcionam com Claude Code (a ferramenta CLI da Anthropic). Você precisa ter uma conta na Anthropic e o Claude Code instalado. As skills são compatíveis com qualquer versão atual: Claude 3, Claude 4 e versões futuras.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          O que é uma "alavanca" exatamente?
+          <span class="faq-chevron">+</span>
+        </div>
+        <div class="faq-answer">
+          <p>É o ponto onde um esforço pequeno gera resultado grande. Em logística pode ser a rota de entrega. Em atendimento pode ser o tempo de primeira resposta. Em vendas pode ser a taxa de follow-up. Toda empresa tem as suas — as skills te ajudam a identificar e agir sobre elas com IA.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          Meus dados ficam salvos na nuvem?
+          <span class="faq-chevron">+</span>
+        </div>
+        <div class="faq-answer">
+          <p>Não. O Claude Code roda na sua máquina. As skills são arquivos locais. O processamento passa pelo modelo da Anthropic (como qualquer uso do Claude), mas você não está mandando dados pra um terceiro adicional. A Anthropic tem política de privacidade própria disponível no site deles.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          As skills são atualizadas automaticamente?
+          <span class="faq-chevron">+</span>
+        </div>
+        <div class="faq-answer">
+          <p>Novas skills são adicionadas ao pacote periodicamente. Quem comprou o acesso recebe as adições sem custo adicional. A atualização não é automática — você baixa o pacote novo quando quiser —, mas o acesso fica com você.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          Posso usar em mais de um computador?
+          <span class="faq-chevron">+</span>
+        </div>
+        <div class="faq-answer">
+          <p>Sim. O acesso é seu. Você pode instalar nas suas máquinas. Não tem DRM, não tem token de ativação. Se quiser compartilhar com o time, temos condições para licenças de equipe — manda um e-mail pra conversar.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          E se eu não tiver o Claude Code instalado ainda?
+          <span class="faq-chevron">+</span>
+        </div>
+        <div class="faq-answer">
+          <p>A instrução de instalação do Claude Code vem junto com o pacote. São 5 minutos: instala o Node, roda um comando no terminal, autentica na Anthropic e pronto. Você não precisa saber nada técnico além de copiar e colar um comando.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section id="final-cta">
+  <div class="container">
+    <div class="final-cta-inner">
+      <div class="section-label">// próximo passo</div>
+      <h2>Qual número da sua empresa você quer mover primeiro?</h2>
+      <p>500+ skills esperando. Um comando pra ativar. Você decide por onde começa.</p>
+      <div class="final-cmd"><span>gabriel@strat ~ %</span> /garantir-acesso</div>
+      <br>
+      <a href="#preco" class="btn btn-orange btn-lg">Garantir acesso por R$ 47</a>
+      <p style="margin-top:16px;font-size:13px;">Garantia de 7 dias. Sem pergunta.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-logo">&gt; strat.skills _</div>
+      <div class="footer-links">
+        <a href="#">Termos</a>
+        <a href="#">Privacidade</a>
+        <a href="mailto:contato@strat.ai">Contato</a>
+      </div>
+      <div class="footer-copy">© 2026 Strat · Gabriel Gabas</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  function toggleFaq(el) {
+    const item = el.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  }
+</script>
+
+</body>
+</html>

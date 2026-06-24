@@ -1,0 +1,11 @@
+{
+  "name": "lp-500-skills",
+  "private": true,
+  "description": "LP do pack 500 skills (Strat Academy) — estática, servida no Easypanel.",
+  "scripts": {
+    "start": "serve . -l tcp://0.0.0.0:${PORT:-3000}"
+  },
+  "dependencies": {
+    "serve": "^14.2.4"
+  }
+}

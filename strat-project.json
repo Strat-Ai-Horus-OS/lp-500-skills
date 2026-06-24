@@ -1,0 +1,31 @@
+{
+  "name": "lp-500-skills",
+  "title": "LP — Pack 500 Skills para Claude",
+  "type": "landing-page",
+  "description": "Sales page do pack '+500 Skills para Claude' da Strat Academy. LP estatica (HTML puro), servida no Easypanel (nixpacks, sem build), com checkout na Hotmart. Traqueada server-side via Rastro: inclui o snippet plug-and-play /strat-track (consentimento LGPD + Meta Pixel + PostHog + atribuicao de venda por xcod -> webhook).",
+  "status": "production",
+  "version": "1.0.0",
+  "visibility": "private",
+  "install": "deploy no Easypanel (nixpacks, serve o diretorio estatico)",
+  "homepage": null,
+  "language": "html",
+  "features": [
+    "Sales page estatica do pack 500 skills",
+    "Checkout na Hotmart",
+    "Tracking server-side via Rastro (snippet /strat-track?product=lp-500-skills)",
+    "Consentimento LGPD + Meta Pixel + PostHog",
+    "Atribuicao de venda (trk -> checkout-session -> xcod -> webhook -> Purchase)"
+  ],
+  "stack": ["html", "easypanel", "hotmart", "rastro", "meta-pixel", "posthog"],
+  "tags": ["landing-page", "sales-page", "hotmart", "tracking", "strat-academy"],
+  "owner": "Helbert Paranhos / Strat Academy",
+  "updated": "2026-06-23",
+  "approval": {
+    "target": "internal",
+    "status": "approved",
+    "requested_by": "helbertparanhos",
+    "requested_at": "2026-06-23",
+    "approved_by": "helbertparanhos",
+    "decision_at": "2026-06-23"
+  }
+}

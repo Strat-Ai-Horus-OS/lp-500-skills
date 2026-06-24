@@ -1,0 +1,5 @@
+# lp-500-skills — LP estática (HTML puro). Sem build: serve o diretório direto.
+# O tracking vem do snippet servido pelo Rastro (strat-track), auto-configurado —
+# nada de Infisical/env aqui.
+[start]
+cmd = "serve . -l tcp://0.0.0.0:${PORT:-3000}"
