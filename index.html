@@ -528,6 +528,14 @@ footer { background: var(--brown); padding: 46px 0; }
 .ft-copy { font-size: 12px; color: rgba(255,255,255,.25); }
 .ft-legal { font-size: 11px; color: rgba(255,255,255,.18); max-width: 580px; line-height: 1.65; }
 </style>
+<!-- Hotmart launcher (analytics da página de venda — conta padrão Strat). Estático no <head> pra passar o "Verificar instalação" da Hotmart. -->
+<script id="hotmart_launcher_script">
+  (function(l,a,u,n,c,h,e,r){l['HotmartLauncherObject']=c;l[c]=l[c]||function(){
+  (l[c].q=l[c].q||[]).push(arguments)},l[c].l=1*new Date();h=a.createElement(u),
+  e=a.getElementsByTagName(u)[0];h.async=1;h.src=n;e.parentNode.insertBefore(h,e)
+  })(window,document,'script','//launcher.hotmart.com/launcher.js','hot');
+  hot('account','6f2c2394-9d1b-3999-9a14-087cfe3fd764');
+</script>
 </head>
 <body>
 
